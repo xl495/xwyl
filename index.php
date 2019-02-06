@@ -4,7 +4,7 @@
  * 
  * @package xwyl
  * @author Xliang
- * @version 0.1
+ * @version 0.11
  * @link https://xlaiy.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

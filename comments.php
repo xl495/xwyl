@@ -1,3 +1,49 @@
+<?php function threadedComments($comments, $options) {
+    $commentClass = '';
+    if ($comments->authorId) {
+        if ($comments->authorId == $comments->ownerId) {
+            $commentClass .= ' comment-by-author';
+        } else {
+            $commentClass .= ' comment-by-user';
+        }
+    }
+ 
+    $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
+?>
+ 
+<li id="li-<?php $comments->theId(); ?>" class="comment-body<?php 
+if ($comments->levels > 0) {
+    echo ' comment-child';
+    $comments->levelsAlt('comment-level-odd', ' comment-level-even');
+} else {
+    echo ' comment-parent';
+}
+$comments->alt(' comment-odd', ' comment-even');
+echo $commentClass;
+?>">
+    <div id="<?php $comments->theId(); ?>">
+        <div class="comment-author">
+            <?php $comments->gravatar('50', ''); ?>
+            <div class="fn">
+            <p><?php $comments->author(); ?></p>
+            <p><a href="<?php $comments->permalink(); ?>">
+            <time style='color: rgba(171,171,171.5)'><?php $comments->date('Y-m-d H:i'); ?></time> · 
+            <span class="comment-reply"><?php $comments->reply(); ?></span>
+        </div></p>
+        </cite>
+        </div>
+        <div class='comment-author-content'><?php $comments->content(); ?></div>
+        <div class="comment-meta">
+        
+        </div>
+    </div>
+<?php if ($comments->children) { ?>
+    <div class="comment-children">
+        <?php $comments->threadedComments($options); ?>
+    </div>
+<?php } ?>
+</li>
+<?php } ?>
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div id="comments" class='blog-comments' data-aos='fade-up'>
     <?php $this->comments()->to($comments); ?>
@@ -17,14 +63,14 @@
         </div>
     
     	<h4 id="response"><?php _e('<i style="font-size: 2rem;" class="mdui-icon material-icons">comment</i> 评论卡'); ?></h4>
-    	<form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+    	<form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form" autocomplete="off">
             <?php if($this->user->hasLogin()): ?>
     		<p><?php _e('登录身份: '); ?><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>. <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></p>
             <?php else: ?>
     		<p>
                 <i class="mdui-icon material-icons">account_box</i>
                 <label for="author" class="required"><?php _e(''); ?></label>
-    			<input type="text" name="author" id="author" class="text"  placeholder=" 昵称 *" value="<?php $this->remember('author'); ?>" required />
+    			<input type="text" name="author" id="author" class="text"  placeholder=" 昵称 *"  value="<?php $this->remember('author'); ?>" required />
     		</p>
     		<p>
                 <i class="mdui-icon material-icons">email</i>
@@ -38,14 +84,14 @@
     			<input type="url" name="url" id="url" class="text" placeholder="<?php _e('http://(选填)'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
     		</p>
             <?php endif; ?>
-    		<p style='margin: 0'>
+    		<div>
                 <label for="textarea" class="required"><?php _e(''); ?></label>
-                <textarea name="text" id="textarea" class="textarea" required placeholder=" 内容 *" ><?php $this->remember('text'); ?></textarea></p>
+                <textarea name="text" id="textarea" class="textarea" required placeholder=" 内容 *" ><?php $this->remember('text'); ?></textarea>
                 <div class='comments-submit'>
                 <button type="submit" class="submit" title='发送'>
                 <i style='font-size: 2rem' class="mdui-icon material-icons">near_me</i></button>
-                </div>
-            
+            </div>
+            </div>
     	</form>
     </div>
     <?php else: ?>

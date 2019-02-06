@@ -234,7 +234,7 @@ input,button,select,textarea{outline:none;}
     left: -250px;
     width: 245px;
     height: 100%;
-    background-color :seagreen;
+    background-color: rgba(170,170,170,.9);
     z-index: 999;
     transition: all .5s;
     opacity: 1;
@@ -242,6 +242,7 @@ input,button,select,textarea{outline:none;}
 }
 .sidebar_left_top {
     height: 165px;
+    margin-bottom: 1.5rem;
     background-color :silver;
     background: url(http://www.005.tv/uploads/allimg/181213/55-1Q2131613363V.jpg);
     background-size: cover;
@@ -257,6 +258,43 @@ input,button,select,textarea{outline:none;}
     cursor: pointer;
     background-color: rgba(11,11,11,.7);
 }
+/* #submit 站内搜索 */
+#search-box {
+    height: 36px;
+    width: 245px;
+    padding: 0 1rem;
+}
+#search-box>form{
+    position: relative;
+}
+#search-box>form>div>.text {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    padding: 0 1rem 0 2.25rem;
+    z-index:4;
+    transition: all .5s;
+    background-color: rgba(255,255,255,0.7);
+    
+}
+#search-box>form>div>.text:focus {
+    background-color: rgba(255,255,255,1);
+    box-shadow:0 2px 20px rgba(0,0,0,.5);
+}
+.search-icon {
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+    pointer-events: none;
+}
+.search-icon>i {
+    margin-left: 0.5rem;
+    line-height: 36px;
+}
 .ul-nav {
     margin: 2rem 0;
     padding: 0rem;
@@ -264,12 +302,19 @@ input,button,select,textarea{outline:none;}
 .ul-nav>li {
     list-style: none;
     min-height: 40px;
+    padding: 0 1.5rem;
     line-height: 40px;
-    text-align: center;
     cursor: pointer;
 }
+.ul-nav>li:hover {
+    background-color: rgba(200,200,200,1)
+}
 .ul-nav>li>a {
-    display: inline-block;
+    display: block;
+    transition: all .3s;
+}
+.ul-nav>li>a:hover {
+    color: #0080FF!important;
 }
 .ul-nav>li>a>span {
     vertical-align: -5%;
@@ -359,7 +404,7 @@ input,button,select,textarea{outline:none;}
     box-shadow: 0 2px 10px rgba(170,171,170,.6);
 }
 .comment-list {
-    padding: 1em;
+    padding: 1em 0;
     margin: 0.5em 0;
     border-radius: 2px;
     background-color: rgba(255,255,255,.7);
@@ -389,10 +434,8 @@ input,button,select,textarea{outline:none;}
 }
 .comments-submit {
     display: inline;
-    float:right;
     position: relative;
     top: -2rem;
-    height:50px;
     background: #1296db;
     border-radius: 30px;
     margin-right: 0.5rem;
@@ -419,6 +462,35 @@ input,button,select,textarea{outline:none;}
 #comment-1,.comment-list {
     list-style: none;
 }
+/* 自定义评论样式 comments */
+.comment-body {
+    margin: 1rem 0;
+}
+.comment-author {
+    display: block;
+    height: 50px;
+}
+.comment-author>.fn {
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: text-bottom;
+}
+.comment-author>.fn>p {
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+}
+.comment-author-content {
+    padding-left: 4.2rem;
+}
+.comment-author-content>p {
+    margin: 0.5rem 0;
+}
+.comment-author>.avatar {
+    border-radius: 25px;
+}
+.comment-children {
+    margin-left: 2.5rem;
+}
 /* archive */
 .archive-title {
     padding: 0.5rem 0;
@@ -430,12 +502,6 @@ input,button,select,textarea{outline:none;}
     background-color: #fff;
     padding: 1.5rem;
     box-shadow:0 0 20px rgba(0,0,0,.1);
-}
-.fn {
-    padding: 0 0.5em;
-    background-color: #1296db;
-    border-radius: 4px;
-    margin-left: 3px;
 }
 /* media */
 @media (max-width: 768px){

@@ -30,6 +30,7 @@ $(document).on('pjax:complete',
     fancyapps(); // 灯箱函数重载
     comments();  // 评论样式
     commentssubmit(); // 评论提交按钮
+    prenext(); //上一篇下一篇
 });
 </script>
 <script>

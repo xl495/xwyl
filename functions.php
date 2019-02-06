@@ -63,3 +63,5 @@ function getViewsStr($widget, $format = "浏览: {views}次") {
     }
     return str_replace("{views}", $views, $format);
 }
+
+

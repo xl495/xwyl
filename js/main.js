@@ -46,14 +46,15 @@ $(function(){
     });
 })
 // pre-next link
-$(function(){
+function prenext(){
     var link1 = $(".pre-next-link-left>a").attr("href");
     var title1 = $(".pre-next-link-left>a").attr("title");
     var link2 = $(".pre-next-link-right>a").attr("href");
     var title2 = $(".pre-next-link-right>a").attr("title");
     $(".pre-next-left>a").attr({'href':link1,'title':title1});
     $(".pre-next-right>a").attr({'href':link2,'title':title2});
-})
+}
+prenext();
 // #comments input style 
 function comments(){
 $(document).ready(function(){
