@@ -87,10 +87,9 @@ echo $commentClass;
     		<div>
                 <label for="textarea" class="required"><?php _e(''); ?></label>
                 <textarea name="text" id="textarea" class="textarea" required placeholder=" 内容 *" ><?php $this->remember('text'); ?></textarea>
-                <div class='comments-submit'>
-                <button type="submit" class="submit" title='发送'>
-                <i style='font-size: 2rem' class="mdui-icon material-icons">near_me</i></button>
             </div>
+            <div class='comments-submit'>
+                <button type="submit" class="submit" title='发送'>发送</button>
             </div>
     	</form>
     </div>

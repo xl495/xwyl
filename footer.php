@@ -14,6 +14,8 @@
  <!-- end #footer  -->
 <?php $this->footer(); ?>
 <script src='<?php $this->options->themeUrl('js/main.js'); ?>'></script>
+<script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js"></script>
 <script>
 $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax])', {
 container: '#main',

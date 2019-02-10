@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.2/css/mdui.min.css">
     <link href="https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
-    <script src="https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
     <script src="<?php $this->options->themeUrl('js/nprogress.js'); ?>"></script>
     <?php $this->header(); ?>
@@ -31,6 +29,19 @@
     <!--[if lt IE 10]>
       <div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
     <![endif]-->
+    <style>
+        .entry_text>video{max-width:100%;}
+        #search-box>form>.text {
+    max-width: 100%;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    padding: 0 1rem 0 2.25rem;
+    z-index:4;
+    transition: all .5s;
+    background-color: rgba(255,255,255,0.7);
+}
+    </style>
 <div id='loader-wrapper'></div>
 <div id='header' class='header' data-aos="fade-down">
     <div class='header-menu-open'>
